@@ -7,11 +7,11 @@
 function showSalary(users, age) {
   let finalStr = '';
 
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i].age <= age) {
-      finalStr += `${arr[i].name}, ${arr[i].balance}\n`;
+  for (let i = 0; i < users.length; i++) {
+    if (users[i].age <= age) {
+      finalStr += `${users[i].name}, ${users[i].balance}\n`;
     };
   };
 
-  return finalStr = `'${finalStr.slice(0, finalStr.length - 1)}'`;
+  return finalStr = `${finalStr.slice(0, finalStr.length - 1)}`;
 }
