@@ -38,8 +38,8 @@ export default class UserTable {
             let row = document.createElement('tr');
             table.querySelector('tbody').append(row);
             for (let key in rows[i]) {
-                let ttt = rows[i][key];
-                row.insertAdjacentHTML('beforeend', `<td>${ttt}</td>`);
+                let cell = rows[i][key];
+                row.insertAdjacentHTML('beforeend', `<td>${cell}</td>`);
             }
             row.insertAdjacentHTML('beforeend', `<td><button>X</button></td>`);
         }
