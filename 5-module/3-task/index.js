@@ -6,26 +6,31 @@ function initCarousel() {
     let slideWidth = slide.offsetWidth;
     let sliderPosition = 0;
     let totalSlider = document.querySelectorAll('.carousel__slide');
+    let currendSlide = 0;
 
     arrLeft.style.display = 'none';
+
     arrLeft.addEventListener("click", function() {
-        sliderPosition += slideWidth;
+        currendSlide--;
+        sliderPosition = slideWidth * -currendSlide;
         slidersWrap.style.transform = `translateX(${sliderPosition}px)`;
-        if (!sliderPosition) {
+
+        if (!currendSlide) {
             arrLeft.style.display = 'none';
-        }
-        if (sliderPosition > -(slideWidth * (totalSlider.length - 1))) {
+        } else {
             arrRight.style.display = '';
         }
     });
+
     arrRight.addEventListener("click", function() {
-        sliderPosition -= slideWidth;
+        currendSlide++;
+        sliderPosition = slideWidth * -currendSlide;
         slidersWrap.style.transform = `translateX(${sliderPosition}px)`;
-        if (sliderPosition) {
-            arrLeft.style.display = '';
-        }
-        if (sliderPosition < -(slideWidth * (totalSlider.length - 2))) {
+
+        if (currendSlide == totalSlider.length - 1) {
             arrRight.style.display = 'none';
+        } else {
+            arrLeft.style.display = '';
         }
     });
 

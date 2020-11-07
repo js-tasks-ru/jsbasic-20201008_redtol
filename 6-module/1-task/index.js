@@ -46,7 +46,7 @@ export default class UserTable {
         this.elem.addEventListener('click', function(event) {
             let target = event.target;
             if (target.tagName != 'BUTTON') return;
-            target.closest('tr').hidden = true;
+            target.closest('tr').remove();
         })
     }
 
