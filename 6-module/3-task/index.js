@@ -46,18 +46,18 @@ export default class Carousel {
         let slide = this.elem.querySelector('.carousel__slide');
         let sliderPosition = 0;
         let totalSlider = this.elem.querySelectorAll('.carousel__slide');
-        let currendSlideNumber = 0;
-        let currentSlide;
+        let currentSlideNumber = 0;
+        this.currentSlideNumber = currentSlideNumber;
 
         arrLeft.style.display = 'none';
 
         arrLeft.addEventListener("click", function() {
-            currendSlideNumber--;
+            currentSlideNumber--;
 
-            sliderPosition = slide.offsetWidth * -currendSlideNumber;
+            sliderPosition = slide.offsetWidth * -currentSlideNumber;
             sliderWrap.style.transform = `translateX(${sliderPosition}px)`;
 
-            if (!currendSlideNumber) {
+            if (!currentSlideNumber) {
                 arrLeft.style.display = 'none';
             } else {
                 arrRight.style.display = '';
@@ -65,11 +65,11 @@ export default class Carousel {
         });
 
         arrRight.addEventListener("click", function() {
-            currendSlideNumber++;
-            sliderPosition = slide.offsetWidth * -currendSlideNumber;
+            currentSlideNumber++;
+            sliderPosition = slide.offsetWidth * -currentSlideNumber;
             sliderWrap.style.transform = `translateX(${sliderPosition}px)`;
 
-            if (currendSlideNumber == totalSlider.length - 1) {
+            if (currentSlideNumber == totalSlider.length - 1) {
                 arrRight.style.display = 'none';
             } else {
                 arrLeft.style.display = '';
@@ -80,15 +80,12 @@ export default class Carousel {
 
         buttonAdd.addEventListener('click', () => this.onClick());
 
-
     }
 
-    // let slide
 
     onClick() {
-        console.log('test');
         const customEvent = new CustomEvent("product-add", {
-            detail: console.log(slide.id),
+            detail: console.log(this.slides[this.currentSlideNumber].id),
             bubbles: true
         });
         this.elem.dispatchEvent(customEvent);
