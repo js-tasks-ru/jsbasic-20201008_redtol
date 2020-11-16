@@ -85,7 +85,7 @@ export default class Carousel {
 
     onClick() {
         const customEvent = new CustomEvent("product-add", {
-            detail: console.log(this.slides[this.currentSlideNumber].id),
+            detail: this.slides[this.currentSlideNumber].id,
             bubbles: true
         });
         this.elem.dispatchEvent(customEvent);
